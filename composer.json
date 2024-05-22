@@ -1,0 +1,17 @@
+{
+  "name": "nunomarques/notes_app_php",
+  "description": "One simple Application to save notes, but with MVC pattrons, and OOP.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "NlcmarquesDev",
+      "email": "nunolcmarques@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
