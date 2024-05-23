@@ -1,6 +1,6 @@
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 ">
     <div class="col-md-4 my-auto">
-        <span class="mb-3 mb-md-0 text-body-secondary">
+        <span class="mb-3 mb-md-0 text-body-secondary ">
             Copyright &copy; 2024 | 💻 NMarquesDev
         </span>
     </div>

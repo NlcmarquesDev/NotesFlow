@@ -12,7 +12,7 @@ Router::showPartials('navbar');
         <div class="row row-cols-1 row-cols-lg-2 align-items-md-center g-5 py-5">
             <div class="col ">
 
-                <img src="/notes_app_php/public/assets/giphy.gif" alt="">
+                <img class="img-gif" src="/notes_app_php/public/assets/giphy.gif" alt="">
             </div>
             <div class="col">
                 <div class="d-flex flex-column">
@@ -21,7 +21,7 @@ Router::showPartials('navbar');
                     <p class="col-lg-6 mx-auto mb-5 w-100">
                         Capture your ideas, organize your thoughts, and never miss an inspiration. With Notable, all your notes are at your fingertips, quickly and easily. Let your creativity flow, plan your day, or jot down that important thought – all in one place. Simple, intuitive, and powerful. Make Notable your perfect note-taking companion.
                     </p>
-                    <div class="d-flex justify-content-center align-items-center gap-4">
+                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-sm-4 gap-2">
 
                         <a href="/notes_app_php/login" class="btn btn-primary px-5 mb-5" type="button">
                             Log in

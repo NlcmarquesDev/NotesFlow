@@ -2,10 +2,8 @@
     <form class="my-auto" role="search">
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
     </form>
-    <div class="nav col-12 col-lg-auto  justify-content-center align-items-center gap-4  text-small">
-        <a href="/" class="d-flex align-items-center  text-black text-decoration-none logo-user fs-3">
-            <?= $_SESSION['user'] ? $_SESSION['user']['email'][0] : '' ?>
-        </a>
+    <div class="nav  justify-content-center align-items-center gap-4  text-small">
+
         <a href="#" class="text-black  text-decoration-none">
             <div class="d-flex flex-column justify-content-center align-items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
