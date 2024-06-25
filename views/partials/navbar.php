@@ -17,7 +17,6 @@ use App\Core\Router; ?>
                         <?= $_SESSION['user'] ? $_SESSION['user']['email'][0] : '' ?>
                     </a>
                     <form action="/notes_app_php/logout" method="POST">
-                        <input type="hidden" name="_method" value="delete">
                         <button type="submit" class="btn btn-primary">logout</button>
                     </form>
                 </div>

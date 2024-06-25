@@ -1,20 +1,19 @@
 <?php
 
 
-$router->get('/', 'index');
 
-$router->get('/about', 'about');
-
-
-$router->get('/register', 'registration/show');
-$router->post('/register', 'registration/create');
-
-$router->get('/login', 'sessions/show');
-$router->post('/login', 'sessions/log');
+$router->get('/', 'IndexController', 'index');
 
 
-$router->get('/notes', 'notes/show');
-// $router->post('/notes', 'create');
+$router->get('/register', 'RegisterController', 'index');
+$router->post('/register', 'RegisterController', 'create');
+
+$router->get('/login', 'LoginController', 'index');
+$router->post('/login', 'LoginController', 'log');
 
 
-$router->delete('/logout', 'sessions/destroy');
+$router->get('/notes', 'NotesController', 'index');
+// // $router->post('/notes', 'create');
+
+
+$router->post('/logout', 'LoginController', 'logout');

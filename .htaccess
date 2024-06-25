@@ -6,7 +6,7 @@
   RewriteRule ^$ index.php [L]
 
   # Não redirecionar se a solicitação já for para index.php
-  RewriteRule ^index\.php$ - [L]
+  RewriteRule ^index\.php$ - [QSA,L]
 
   # Não redirecionar se o arquivo ou diretório solicitado existir
   RewriteCond %{REQUEST_FILENAME} !-f

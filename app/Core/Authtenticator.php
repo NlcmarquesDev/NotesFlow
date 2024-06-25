@@ -17,7 +17,7 @@ class Authtenticator
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
-                $_SESSION['user'] = ["email" => $email];
+                $_SESSION['user'] = ["email" => $email, "id" => $user['id']];
                 session_regenerate_id(true);
 
                 // dd($_SESSION['user']);
