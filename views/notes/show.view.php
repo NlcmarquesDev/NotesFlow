@@ -7,6 +7,11 @@ Router::showPartials('navbar');
 
 ?>
 <div class="my-5">
+    <?php if (isset($msg)) : ?>
+        <div class="alert alert-success">
+            <h4><?= $msg ?></h4>
+        </div>
+    <?php endif ?>
     <div class="d-flex flex-wrap px-0 gap-2 mt-3">
         <!-- Button trigger modal -->
         <button type="button" class="card text-center" style="max-width: 19rem; min-width: 12rem;" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -21,16 +26,26 @@ Router::showPartials('navbar');
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Note</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                    <form action="/notes_app_php/notes" method="POST">
+                        <div class="modal-body">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="title" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <label for="floatingInput">Title</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" name="message" placeholder="Leave a message here" rows="14" cols="30" id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea">Message</label>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Note</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -40,9 +55,9 @@ Router::showPartials('navbar');
 
                 <div class="card" style="max-width: 19rem;">
                     <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title"><?= $note['title'] ?></h5>
                         <p class="card-text"><?= $note['body'] ?></p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><small class="text-body-secondary"><?= $note['date_note'] ?></small></p>
                     </div>
                 </div>
             <?php endforeach ?>

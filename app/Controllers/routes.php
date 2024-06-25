@@ -13,7 +13,7 @@ $router->post('/login', 'LoginController', 'log');
 
 
 $router->get('/notes', 'NotesController', 'index');
-// // $router->post('/notes', 'create');
+$router->post('/notes', 'NotesController', 'create');
 
 
 $router->post('/logout', 'LoginController', 'logout');
