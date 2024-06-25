@@ -10,4 +10,4 @@
 </head>
 
 <body>
-    <div class="container vh-100 d-flex flex-column justify-content-between">
+    <div class="container  ">

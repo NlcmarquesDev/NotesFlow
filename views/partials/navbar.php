@@ -3,7 +3,6 @@
 use App\Core\Router; ?>
 <header class="py-3 ">
     <div class="d-flex flex-wrap align-items-center justify-content-between ">
-
         <div class="col-md-3  ">
             <a href="/notes_app_php/" class="d-inline-flex link-body-emphasis text-decoration-none">
                 <h1>NoteFlow</h1>

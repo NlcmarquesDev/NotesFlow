@@ -8,8 +8,7 @@ Router::showPartials('navbar');
 
 
 ?>
-<div class="container px-4 py-5">
-
+<div class=" px-4 py-5 my-auto ">
     <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
         <div class="col d-flex flex-column align-items-start gap-2">
             <h4 class="text-body-secondary fst-italic fw-bold">

@@ -7,7 +7,7 @@ Router::showPartials('navbar');
 
 
 ?>
-<div class="container my-5">
+<div class=" my-5 my-auto">
     <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
         <div class="row row-cols-1 row-cols-lg-2 align-items-md-center g-5 py-5">
             <div class="col ">
