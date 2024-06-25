@@ -7,9 +7,9 @@ Router::showPartials('navbar');
 
 ?>
 <div class="my-5">
-    <?php if (isset($msg)) : ?>
+    <?php if (isset($_SESSION['msg'])) : ?>
         <div class="alert alert-success">
-            <h4><?= $msg ?></h4>
+            <h4><?= $_SESSION['msg'] ?></h4>
         </div>
     <?php endif ?>
     <div class="d-flex flex-wrap px-0 gap-2 mt-3">
@@ -77,6 +77,6 @@ Router::showPartials('navbar');
 
 
 <?php
-
+unset($_SESSION['msg']);
 Router::showPartials('footer');
 ?>

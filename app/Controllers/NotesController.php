@@ -29,17 +29,15 @@ class NotesController
             $data = [
                 "title" => htmlspecialchars($_POST['title']),
                 "message" => htmlspecialchars($_POST['message']),
-                "user_id" => $_SESSION['user']['id'],
+                "user_id" => (int)$_SESSION['user']['id'],
                 "date_note" => date("Y-m-d H:i:s"),
                 "priority" => 0
             ];
 
             $notes = new NotesDAO();
             $notes->addNote($data);
-            $msg = 'Note save successfully';
-            view('notes/show', [
-                'msg' => $msg
-            ]);
+            $_SESSION['alert'] = 'Note save successfully';
+            redirect('/notes');
         }
         redirect('/notes');
     }
