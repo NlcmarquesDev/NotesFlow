@@ -39,6 +39,12 @@ Router::showPartials('navbar');
                                 <textarea class="form-control" name="message" placeholder="Leave a message here" rows="14" cols="30" id="floatingTextarea"></textarea>
                                 <label for="floatingTextarea">Message</label>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Priority
+                                </label>
+                            </div>
 
                         </div>
                         <div class="modal-footer">
@@ -61,22 +67,23 @@ Router::showPartials('navbar');
                         <p class="card-text"><?= $note['body'] ?></p>
                         <div class="d-flex justify-content-between ">
                             <p class="card-text my-auto"><small class="text-body-secondary"><?= $note['date_note'] ?></small></p>
-                            <form action="/notes" method="POST">
-                                <input type="hidden" name="_method" value="delete">
+                            <!-- <form action="" method="GET"> -->
+                            <a href="/notes_app_php/note?id=<?= $note['id'] ?>">
                                 <button class="btn btn-outline-danger border-0" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash2-fill" viewBox="0 0 16 16">
                                         <path d="M2.037 3.225A.7.7 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2a.7.7 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671zm9.89-.69C10.966 2.214 9.578 2 8 2c-1.58 0-2.968.215-3.926.534-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466-.18-.14-.498-.307-.975-.466z" />
                                     </svg>
                                 </button>
-                            </form>
+                                <!-- </form> -->
+                            </a>
                         </div>
                     </div>
                 </div>
             <?php endforeach ?>
         <?php else : ?>
-            <div class="card alert alert-info" style="max-width: 19rem;">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <h5>Empty notes!</h5>
-                </div>
+            <div class="card alert alert-info col-sm-6 col-md-4 col-lg-3 " style="width: 19rem; height: 15rem;">
+
+                <h5 class="m-auto">Empty notes!</h5>
+
             </div>
 
         <?php endif ?>

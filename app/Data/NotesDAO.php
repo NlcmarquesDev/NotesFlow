@@ -29,4 +29,8 @@ class NotesDAO
             'priority' => $data['priority']
         ]);
     }
+    public function deleteNote($id)
+    {
+        $this->db->query("DELETE FROM notes WHERE id = :id", [':id' => $id]);
+    }
 }

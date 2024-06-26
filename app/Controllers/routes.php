@@ -14,6 +14,8 @@ $router->post('/login', 'LoginController', 'log');
 
 $router->get('/notes', 'NotesController', 'index');
 $router->post('/notes', 'NotesController', 'create');
+$router->delete('/notes', 'NotesController', 'delete');
 
+$router->get('/note', 'NotesController', 'delete');
 
 $router->post('/logout', 'LoginController', 'logout');
