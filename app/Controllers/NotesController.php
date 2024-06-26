@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Core\Database;
+
 use App\Data\NotesDAO;
+use App\Core\Authtenticator;
 
 class NotesController
 {
@@ -17,11 +18,12 @@ class NotesController
     }
     public function index()
     {
+        $auth = (new Authtenticator)->auth();
 
 
         $notesUser = $this->notes->getNotesByUser($_SESSION['user']['id']);
 
-        // dd($notesUser);
+        // dd($_SESSION);
         view('notes/show', [
             'notes' => $notesUser
         ]);
@@ -36,7 +38,7 @@ class NotesController
                 "message" => htmlspecialchars($_POST['message']),
                 "user_id" => (int)$_SESSION['user']['id'],
                 "date_note" => date("Y-m-d H:i:s"),
-                "priority" => 0
+                "priority" => $_POST['priority'] ?? 0
             ];
 
             // $notes = new NotesDAO();

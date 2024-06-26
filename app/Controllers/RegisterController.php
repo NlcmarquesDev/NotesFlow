@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Core\Database;
+use App\Data\UsersDAO;
+use App\Core\Authtenticator;
 use App\Core\ValidationForm;
 
 class RegisterController
@@ -12,12 +13,13 @@ class RegisterController
 
     public static function index()
     {
+        (new Authtenticator)->isUser();
         view('register/show');
     }
 
     public function create()
     {
-        $db = new Database();
+        $users = new UsersDAO();
 
         $errors = [];
 
@@ -44,22 +46,18 @@ class RegisterController
 
 
         if (empty($errors)) {
-            $result = $db->query('SELECT * FROM users WHERE email =:email', [
-                'email' => $_POST['email']
-            ])->find();
+            $result = $users->getUserByEmail($_POST['email']);;
 
             if ($result) {
-                redirect('register/show');
+                redirect('/register/show');
             } else {
                 // dd($_POST);
-                $result = $db->query('INSERT INTO users (email, password, firstname, lastname) VALUES (:email, :password , :firstname, :lastname)', [
-                    ':email' => htmlspecialchars($_POST['email']),
-                    ':password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
-                    ":firstname" => htmlspecialchars($_POST['firstname']),
-                    ":lastname" => htmlspecialchars($_POST['lastname'])
-                ]);
+                $users->createUser($_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname']);
+
+                $user_id = $users->getUserByEmail($_POST['email']);
 
                 $_SESSION['user'] = [
+                    'id' => $user_id['id'],
                     'email' => $_POST['email'],
                 ];
                 redirect('/notes');

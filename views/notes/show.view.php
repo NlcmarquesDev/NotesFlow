@@ -31,20 +31,24 @@ Router::showPartials('navbar');
                     </div>
                     <form action="/notes_app_php/notes" method="POST">
                         <div class="modal-body">
+
                             <div class="form-floating mb-3">
                                 <input type="text" name="title" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Title</label>
                             </div>
-                            <div class="form-floating">
+                            <div class="form-floating mb-3">
                                 <textarea class="form-control" name="message" placeholder="Leave a message here" rows="14" cols="30" id="floatingTextarea"></textarea>
                                 <label for="floatingTextarea">Message</label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Priority
-                                </label>
+                            <div class="d-flex justify-content-end">
+                                <div class="form-check  ">
+                                    <input class="form-check-input" type="checkbox" name="priority" value="1" id="flexCheckDefault">
+                                    <label class="form-check-label me-0" for="flexCheckDefault">
+                                        Priority
+                                    </label>
+                                </div>
                             </div>
+
 
                         </div>
                         <div class="modal-footer">

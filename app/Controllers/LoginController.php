@@ -11,6 +11,8 @@ class LoginController
 
     public  function index()
     {
+        (new Authtenticator)->isUser();
+
         view('login/show');
     }
 
@@ -37,7 +39,12 @@ class LoginController
     }
     public  function logout()
     {
-        (new Authtenticator)->logout();
+        $_SESSION = [];
+        session_destroy();
+
+        $paramsCookie = session_get_cookie_params();
+
+        setcookie('PHPSESSID', '', time() - 3600, $paramsCookie['path'], $paramsCookie['domain']);
 
         redirect('/');
     }

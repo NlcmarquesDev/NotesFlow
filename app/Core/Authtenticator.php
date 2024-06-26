@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use App\Data\UsersDAO;
+
 class Authtenticator
 {
 
     public function attempt($email, $password)
     {
+        $users = new UsersDAO();
 
-        $user = (new Database)->query("SELECT * FROM users Where email =:email", [
-            'email' => $email,
-        ])->find();
+        $user = $users->getUserByEmail($email);
 
 
         if ($user) {
@@ -27,13 +28,17 @@ class Authtenticator
         return false;
     }
 
-    public function logout()
+    public function auth()
     {
-        $_SESSION = [];
-        session_destroy();
+        if (!$_SESSION['user'] ?? false) {
+            redirect('/');
+        }
+    }
 
-        $paramsCookie = session_get_cookie_params();
-
-        setcookie('PHPSESSID', '', time() - 3600, $paramsCookie['path'], $paramsCookie['domain']);
+    public function isUser()
+    {
+        if ($_SESSION['user']) {
+            redirect('/notes');
+        }
     }
 }
