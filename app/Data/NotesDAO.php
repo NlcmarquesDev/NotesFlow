@@ -50,4 +50,9 @@ class NotesDAO
     {
         return $this->db->query("SELECT * FROM notes WHERE id=:id", [':id' => $id])->find();
     }
+
+    public function search($word)
+    {
+        return $this->db->query("SELECT * FROM notes WHERE title=:word", [':word' => $word])->findAll();
+    }
 }

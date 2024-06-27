@@ -20,3 +20,5 @@ $router->get('/note', 'NotesController', 'delete');
 $router->post('/edit-note', 'NotesController', 'edit');
 
 $router->post('/logout', 'LoginController', 'logout');
+
+$router->post('/search', 'NotesController', 'searchNotes');

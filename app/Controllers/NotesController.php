@@ -81,4 +81,16 @@ class NotesController
         }
         redirect('/notes');
     }
+
+    public function searchNotes()
+    {
+        if (isset($_POST)) {
+            $searchWord = '%' . trim($_POST['search']) . '%';
+
+            $searchNotes = $this->notes->search($searchWord);
+            view('notes/show', [
+                'notes' => $searchNotes
+            ]);
+        }
+    }
 }
