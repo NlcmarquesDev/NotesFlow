@@ -49,6 +49,23 @@ class NotesController
         redirect('/notes');
     }
 
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                "title" => htmlspecialchars($_POST['title']),
+                "body" => htmlspecialchars($_POST['message']),
+                "id" => (int)$_POST['id'],
+                "date_note" => date("Y-m-d H:i:s"),
+                "priority" => $_POST['priority'] ?? 0
+            ];
+
+            $this->notes->updateNote($data);
+            $_SESSION['alert'] = 'Note updated successfully';
+            redirect('/notes');
+        }
+    }
+
     public function delete()
     {
         if (isset($_GET)) {

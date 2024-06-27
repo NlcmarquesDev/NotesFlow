@@ -22,43 +22,7 @@ Router::showPartials('navbar');
         </button>
 
         <!-- Modal -->
-        <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Note</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="/notes_app_php/notes" method="POST">
-                        <div class="modal-body">
-
-                            <div class="form-floating mb-3">
-                                <input type="text" name="title" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Title</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" name="message" placeholder="Leave a message here" rows="14" cols="30" id="floatingTextarea"></textarea>
-                                <label for="floatingTextarea">Message</label>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <div class="form-check  ">
-                                    <input class="form-check-input" type="checkbox" name="priority" value="1" id="flexCheckDefault">
-                                    <label class="form-check-label me-0" for="flexCheckDefault">
-                                        Priority
-                                    </label>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save Note</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <?php include('./../views/components/modalForm.view.php'); ?>
         <?php if (!empty($notes)) : ?>
             <!-- Para fazer os alertas das mensagena ao usuário -->
             <?php foreach ($notes as $note) : ?>
@@ -71,7 +35,48 @@ Router::showPartials('navbar');
                         <p class="card-text"><?= $note['body'] ?></p>
                         <div class="d-flex justify-content-between ">
                             <p class="card-text my-auto"><small class="text-body-secondary"><?= $note['date_note'] ?></small></p>
-                            <!-- <form action="" method="GET"> -->
+                            <!-- <a href="/notes_app_php/edit-note?id=<?= $note['id'] ?>"> -->
+                            <button type="button" class="btn btn-outline-primary border-0" data-bs-toggle="modal" data-bs-target="#editModal<?= $note['id'] ?>">Edit
+                            </button>
+                            <!-- <Modal for Edit> -->
+                            <div class="modal fade text-center" id="editModal<?= $note['id'] ?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Note </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form action="/notes_app_php/edit-note" method="POST">
+                                            <input type="hidden" name="id" value="<?= $note['id'] ?>">
+                                            <div class="modal-body">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" name="title" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                    <label for="floatingInput"><?= $note['title'] ?></label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <textarea class="form-control" name="message" placeholder="Leave a message here" rows="14" cols="30" id="floatingTextarea"></textarea>
+                                                    <label for="floatingTextarea"><?= $note['body'] ?></label>
+                                                </div>
+                                                <div class="d-flex justify-content-end">
+                                                    <div class="form-check  ">
+                                                        <input class="form-check-input" type="checkbox" name="priority" value="1" <?= $note['priority'] === 1 ? 'checked' : '' ?> id="flexCheckDefault">
+                                                        <label class="form-check-label me-0" for="flexCheckDefault">
+                                                            Priority
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save Note</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </a> -->
+
+                            <!-- </form> -->
                             <a href="/notes_app_php/note?id=<?= $note['id'] ?>">
                                 <button class="btn btn-outline-danger border-0" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash2-fill" viewBox="0 0 16 16">
                                         <path d="M2.037 3.225A.7.7 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2a.7.7 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671zm9.89-.69C10.966 2.214 9.578 2 8 2c-1.58 0-2.968.215-3.926.534-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466-.18-.14-.498-.307-.975-.466z" />

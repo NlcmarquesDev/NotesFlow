@@ -29,8 +29,25 @@ class NotesDAO
             'priority' => $data['priority']
         ]);
     }
+    public function updateNote($data)
+    {
+        $this->db->query("UPDATE notes SET body=:body, title=:title, date_note=:date_note, priority=:priority WHERE id = :id", [
+            ':id' => $data['id'],
+            'body' => $data['body'],
+            'date_note' => $data['date_note'],
+            'title' => $data['title'],
+            'priority' => $data['priority']
+        ]);
+    }
+
+
     public function deleteNote($id)
     {
         $this->db->query("DELETE FROM notes WHERE id = :id", [':id' => $id]);
+    }
+
+    public function getNoteById($id)
+    {
+        return $this->db->query("SELECT * FROM notes WHERE id=:id", [':id' => $id])->find();
     }
 }
