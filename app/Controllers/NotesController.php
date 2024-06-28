@@ -87,10 +87,21 @@ class NotesController
         if (isset($_POST)) {
             $searchWord = '%' . trim($_POST['search']) . '%';
 
+            // dd($searchWord);
             $searchNotes = $this->notes->search($searchWord);
+
+            if (empty($searchNotes)) {
+                view('notes/show', [
+                    'notes' => $searchNotes,
+                    'alert' => 'No notes found'
+                ]);
+            }
+            // dd($searchNotes);
             view('notes/show', [
-                'notes' => $searchNotes
+                'notes' => $searchNotes,
             ]);
+        } else {
+            redirect('/notes');
         }
     }
 }

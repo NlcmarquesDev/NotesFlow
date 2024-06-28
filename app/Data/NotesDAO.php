@@ -53,6 +53,6 @@ class NotesDAO
 
     public function search($word)
     {
-        return $this->db->query("SELECT * FROM notes WHERE title=:word", [':word' => $word])->findAll();
+        return $this->db->query("SELECT * FROM notes WHERE title LIKE :word", [':word' => $word])->findAll();
     }
 }
