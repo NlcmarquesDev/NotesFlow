@@ -37,7 +37,7 @@ class Authtenticator
 
     public function isUser()
     {
-        if ($_SESSION['user']) {
+        if (isset($_SESSION['user'])) {
             redirect('/notes');
         }
     }

@@ -88,7 +88,7 @@ class NotesController
             $searchWord = '%' . trim($_POST['search']) . '%';
 
             // dd($searchWord);
-            $searchNotes = $this->notes->search($searchWord);
+            $searchNotes = $this->notes->search($searchWord, $_SESSION['user']['id']);
 
             if (empty($searchNotes)) {
                 view('notes/show', [

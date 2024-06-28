@@ -51,8 +51,8 @@ class NotesDAO
         return $this->db->query("SELECT * FROM notes WHERE id=:id", [':id' => $id])->find();
     }
 
-    public function search($word)
+    public function search($word, $id)
     {
-        return $this->db->query("SELECT * FROM notes WHERE title LIKE :word", [':word' => $word])->findAll();
+        return $this->db->query("SELECT * FROM notes WHERE title  LIKE :word AND user_id=:id ", [':word' => $word, ':id' => $id])->findAll();
     }
 }
