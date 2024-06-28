@@ -1,8 +1,11 @@
 <div class="d-flex justify-content-between mt-3 ">
-    <form action="/notes_app_php/search" class="my-auto d-flex gap-2" role="search" method="POST">
-        <input type="search" class="form-control" name="search" placeholder="Search..." aria-label="Search">
-        <button class="btn btn-outline-primary">search</button>
-    </form>
+    <div class="d-flex gap-2">
+        <form action="/notes_app_php/search" class="my-auto d-flex gap-2" role="search" method="POST">
+            <input type="search" class="form-control" name="search" placeholder="Search..." aria-label="Search">
+            <button class="btn btn-outline-primary">search</button>
+        </form>
+        <a href="/notes_app_php/notes" class="btn btn-outline-primary">All Notes</a>
+    </div>
 
     <button type="button" class="btn btn-outline-dark border-0 text-center p-2  " data-bs-toggle="modal" data-bs-target="#exampleModal">
         <div class="d-flex justify-content-center align-items-center gap-3">
