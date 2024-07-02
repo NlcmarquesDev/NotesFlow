@@ -16,7 +16,7 @@ class NotesDAO
 
     public function getNotesByUser($id)
     {
-        return $this->db->query('SELECT * FROM notes Where user_id = :id', [':id' => $id])->findAll();
+        return $this->db->query('SELECT * FROM notes WHERE user_id = :id ORDER BY id DESC ', [':id' => $id])->findAll();
     }
 
     public function addNote($data)

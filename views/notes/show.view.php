@@ -8,7 +8,7 @@ Router::showPartials('navbar');
 ?>
 <div class="my-5">
     <?php if (isset($_SESSION['alert'])) : ?>
-        <div class="alert alert-success">
+        <div class=" mx-5 alert alert-success">
             <h4><?= $_SESSION['alert'] ?></h4>
         </div>
     <?php endif ?>
@@ -51,11 +51,11 @@ Router::showPartials('navbar');
                                                 <input type="hidden" name="id" value="<?= $note['id'] ?>">
                                                 <div class="modal-body">
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" name="title" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                        <input type="text" name="title" class="form-control" value="<?= $note['title'] ?>" id="floatingInput" placeholder="name@example.com">
                                                         <label for="floatingInput"><?= $note['title'] ?></label>
                                                     </div>
                                                     <div class="form-floating mb-3">
-                                                        <textarea class="form-control" name="message" placeholder="Leave a message here" rows="14" cols="30" id="floatingTextarea"></textarea>
+                                                        <textarea class="form-control" name="message" value="<?= $note['body'] ?>" placeholder="Leave a message here" rows="14" cols="30" id="floatingTextarea"></textarea>
                                                         <label for="floatingTextarea"><?= $note['body'] ?></label>
                                                     </div>
                                                     <div class="d-flex justify-content-end">
